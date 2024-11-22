@@ -1,13 +1,14 @@
 import "./CatalogItem.css";
 import FavoriteNotActiveIcon from "../icons/FavoriteNotActiveIcon";
 import FavoriteActiveIcon from "../icons/FavoriteActiveIcon";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IProductItem } from "../../store/modal/interfaces";
 
-function CatalogItem({ item }) {
+function CatalogItem({ item }: { item: IProductItem }) {
   const [itemLike, setItemLike] = useState(item?.like);
 
-  const toggleItemLike = (e) => {
+  const toggleItemLike = (e: MouseEvent) => {
     e.stopPropagation();
     setItemLike(!itemLike);
   };

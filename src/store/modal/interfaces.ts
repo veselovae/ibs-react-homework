@@ -1,4 +1,4 @@
-export interface Iterfaces {
+export interface IProductItem {
   id: string;
   name: string;
   description: string;
@@ -15,15 +15,10 @@ export interface Iterfaces {
 interface IProductPicture {
   path: string;
   alt: string;
-  img?: Blob;
+  img?: string;
 }
 
 export interface IState {
-  searchParams: string;
-  catalogItems: Iterfaces[];
-}
-
-export interface IAction {
-  type: string;
-  payload: Iterfaces[] | string;
+  searchParam: string;
+  catalogItems: IProductItem[];
 }

@@ -1,0 +1,7 @@
+.loader-wrapper {
+    width: 100%;
+    text-align: center;
+}
+.loader-wrapper svg {
+    max-width: 7rem;
+}
