@@ -1,4 +1,6 @@
-function UserIcon() {
+import { FunctionComponent } from "react";
+
+export const UserIcon: FunctionComponent = () => {
   return (
     <svg
       width="20"
@@ -13,6 +15,4 @@ function UserIcon() {
       />
     </svg>
   );
-}
-
-export default UserIcon;
+};

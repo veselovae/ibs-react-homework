@@ -1,11 +1,14 @@
-import "./CatalogItem.css";
-import FavoriteNotActiveIcon from "../icons/FavoriteNotActiveIcon";
-import FavoriteActiveIcon from "../icons/FavoriteActiveIcon";
-import { MouseEvent, useState } from "react";
+import { FunctionComponent, MouseEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IProductItem } from "../../store/modal/interfaces";
 
-function CatalogItem({ item }: { item: IProductItem }) {
+import { IProps } from "./model/IProps";
+
+import { FavoriteNotActiveIcon } from "../icons/FavoriteNotActiveIcon";
+import { FavoriteActiveIcon } from "../icons/FavoriteActiveIcon";
+
+import "./CatalogItem.css";
+
+export const CatalogItem: FunctionComponent<IProps> = ({ item }) => {
   const [itemLike, setItemLike] = useState(item?.like);
 
   const toggleItemLike = (e: MouseEvent) => {
@@ -32,6 +35,4 @@ function CatalogItem({ item }: { item: IProductItem }) {
       <span className="item-price">${item.price?.value}</span>
     </div>
   );
-}
-
-export default CatalogItem;
+};

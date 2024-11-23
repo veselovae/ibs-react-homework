@@ -1,4 +1,4 @@
-import { IProductItem } from "../store/modal/interfaces";
+import { IProductItem } from "../store/model/interfaces";
 
 const API_URL = "http://localhost:3006";
 

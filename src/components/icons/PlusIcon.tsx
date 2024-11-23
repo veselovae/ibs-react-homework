@@ -1,4 +1,6 @@
-const PlusIcon = () => {
+import { FunctionComponent } from "react";
+
+export const PlusIcon: FunctionComponent = () => {
   return (
     <svg
       width="14"
@@ -11,5 +13,3 @@ const PlusIcon = () => {
     </svg>
   );
 };
-
-export default PlusIcon;

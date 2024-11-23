@@ -1,4 +1,6 @@
-function FavoriteNotActiveIcon() {
+import { FunctionComponent } from "react";
+
+export const FavoriteNotActiveIcon: FunctionComponent = () => {
   return (
     <svg
       width="20"
@@ -13,6 +15,4 @@ function FavoriteNotActiveIcon() {
       />
     </svg>
   );
-}
-
-export default FavoriteNotActiveIcon;
+};

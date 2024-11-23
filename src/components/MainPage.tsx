@@ -1,7 +1,8 @@
-import Header from "./Header/Header";
 import { Outlet } from "react-router-dom";
+import { Header } from "./Header/Header";
+import { FunctionComponent } from "react";
 
-const MainPage = () => {
+export const MainPage: FunctionComponent = () => {
   return (
     <div>
       <Header />
@@ -9,5 +10,3 @@ const MainPage = () => {
     </div>
   );
 };
-
-export default MainPage;

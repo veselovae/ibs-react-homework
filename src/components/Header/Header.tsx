@@ -1,25 +1,30 @@
-import "./Header.css";
-import SearchIcon from "../icons/SearchIcon";
-import CartIcon from "../icons/CartIcon";
-import UserIcon from "../icons/UserIcon";
-import { changeSearchParamAction } from "../../store";
-import { debounce } from "../../utils/utils";
+import { ChangeEvent, FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { ChangeEvent } from "react";
 
-function Header() {
+import { changeSearchParamAction } from "../../store/actions/actionCreators";
+import { debounce } from "../../utils/utils";
+
+import { SearchIcon } from "../icons/SearchIcon";
+import { CartIcon } from "../icons/CartIcon";
+import { UserIcon } from "../icons/UserIcon";
+
+import "./Header.css";
+
+const DELAY_MS = 600;
+
+export const Header: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
-  const isCatalogPage = useLocation().pathname === "/";
+  const isCatalogPage = pathname === "/";
 
   const debouncedChange = debounce((inputValue: string) => {
     dispatch(changeSearchParamAction(inputValue));
-  }, 600);
+  }, DELAY_MS);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    debouncedChange(inputValue);
+    debouncedChange(e.target.value);
   };
 
   return (
@@ -36,16 +41,14 @@ function Header() {
         </div>
       )}
 
-      <div className="features-box">
-        <button className="feature-btn">
+      <div className="header-features-box">
+        <button className="header-feature-btn">
           <CartIcon />
         </button>
-        <button className="feature-btn">
+        <button className="header-feature-btn">
           <UserIcon />
         </button>
       </div>
     </header>
   );
-}
-
-export default Header;
+};

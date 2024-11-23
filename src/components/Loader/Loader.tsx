@@ -1,12 +1,11 @@
-import LoaderIcon from "../icons/LoaderIcon";
+import { FunctionComponent } from "react";
+import { LoaderIcon } from "../icons/LoaderIcon";
 import "./Loader.css";
 
-const Loader = () => {
+export const Loader: FunctionComponent = () => {
   return (
     <div className="loader-wrapper">
       <LoaderIcon />
     </div>
   );
 };
-
-export default Loader;

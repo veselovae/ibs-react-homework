@@ -1,10 +1,12 @@
-const LoaderIcon = () => {
+import { FunctionComponent } from "react";
+
+export const LoaderIcon: FunctionComponent = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
       <circle
         fill="#E97F03"
         stroke="#E97F03"
-        stroke-width="15"
+        strokeWidth="15"
         r="15"
         cx="40"
         cy="65"
@@ -22,7 +24,7 @@ const LoaderIcon = () => {
       <circle
         fill="#E97F03"
         stroke="#E97F03"
-        stroke-width="15"
+        strokeWidth="15"
         r="15"
         cx="100"
         cy="65"
@@ -40,7 +42,7 @@ const LoaderIcon = () => {
       <circle
         fill="#E97F03"
         stroke="#E97F03"
-        stroke-width="15"
+        strokeWidth="15"
         r="15"
         cx="160"
         cy="65"
@@ -58,5 +60,3 @@ const LoaderIcon = () => {
     </svg>
   );
 };
-
-export default LoaderIcon;

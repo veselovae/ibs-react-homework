@@ -49,7 +49,7 @@ header > .search-box > input::placeholder {
     color: var(--primary-color);
 }
 
-header > .features-box {
+header > .header-features-box {
     position: relative;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@ header > .features-box {
     gap: 1rem;
 }
 
-.feature-btn {
+.header-feature-btn {
     display: flex;
     align-items: center;
     background-color: transparent;

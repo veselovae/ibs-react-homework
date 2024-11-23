@@ -1,4 +1,4 @@
-.detailed-page-container {
+.product-card-container {
     margin-top: 1.5rem;
     padding: 0 1.5rem 1rem 1.5rem;
 }
@@ -16,8 +16,10 @@
     top: 0;
     height: 1.5rem;
     width: 1.5rem;
-    cursor: pointer;
+    border: 0;
+    background-color: transparent;
     transform: rotate(45deg);
+    cursor: pointer;
 }
 
 .back-to-catalog-btn > svg {
@@ -133,7 +135,7 @@
 }
 
 @media (max-width: 852px) {
-    .detailed-page-container {
+    .product-card-container {
         margin-top: 1rem;
     }
 
@@ -141,7 +143,7 @@
         flex-direction: column;
     }
 
-    .detailed-page-container {
+    .product-card-container {
         padding-left: 0;
         padding-right: 0;
     }

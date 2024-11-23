@@ -1,7 +1,8 @@
+import { FunctionComponent } from "react";
+import { ErrorIcon } from "../icons/ErrorIcon";
 import "./Error.css";
-import ErrorIcon from "../icons/ErrorIcon";
 
-const Error = () => {
+export const Error: FunctionComponent = () => {
   return (
     <div className="error-wrapper">
       <div className="error-icon-wrapper">
@@ -11,4 +12,3 @@ const Error = () => {
     </div>
   );
 };
-export default Error;

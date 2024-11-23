@@ -1,7 +1,7 @@
-import "./Page404.css";
 import Img from "../../assets/404_Error.png";
+import "./Page404.css";
 
-const Page404 = () => {
+export const Page404 = () => {
   return (
     <div className="page-404-wrapper">
       <div className="page-404-image-wrapper">
@@ -10,5 +10,3 @@ const Page404 = () => {
     </div>
   );
 };
-
-export default Page404;
