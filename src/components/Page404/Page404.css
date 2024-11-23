@@ -1,0 +1,16 @@
+.page-404-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.page-404-image-wrapper {
+    max-width: 500px;
+    width: 100%;
+}
+
+.page-404-image {
+    width: 100%;
+}
