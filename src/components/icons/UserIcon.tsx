@@ -1,6 +1,4 @@
-import { FunctionComponent } from "react";
-
-export const UserIcon: FunctionComponent = () => {
+export const UserIcon = () => {
   return (
     <svg
       width="20"

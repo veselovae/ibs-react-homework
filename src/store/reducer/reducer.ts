@@ -1,7 +1,6 @@
 import { IProductItem, IState } from "../model/interfaces";
 
 const defaultState: IState = {
-  searchParam: "",
   catalogItems: [],
 };
 
@@ -13,11 +12,6 @@ export const reducer = (state = defaultState, action: any) => {
         catalogItems: [...(action.payload as IProductItem[])],
       };
 
-    case "CHANGE_SEARCH_PARAM":
-      return {
-        ...state,
-        searchParam: action.payload as string,
-      };
     default:
       return state;
   }

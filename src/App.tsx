@@ -1,23 +1,25 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { routes } from "./routes.const";
+import { ROUTES } from "./routes/routes.const";
 
-import { MainPage } from "./components/MainPage";
-import { Catalog } from "./components/Catalog/Catalog";
-import { ProductCard } from "./components/ProductCard/ProductCard";
-import { Page404 } from "./components/Page404/Page404";
+import { CatalogPage } from "@pages/CatalogPage";
+import { ProductPage } from "@pages/ProductPage";
+import { Error404Page } from "@pages/Error404Page";
 
 import "./App.css";
 
 function App() {
   return (
     <Routes>
-      <Route path={routes.default} element={<MainPage />}>
-        <Route index element={<Catalog />} />
-        <Route path={routes.product} element={<ProductCard />} />
+      <Route path={ROUTES.default} element={<CatalogPage />} />
+
+      <Route path={ROUTES.catalog}>
+        <Route index element={<CatalogPage />} />
+        <Route path={ROUTES.product} element={<ProductPage />} />
       </Route>
-      <Route path="*" element={<Page404 />} />
+
+      <Route path="*" element={<Error404Page />} />
     </Routes>
   );
 }

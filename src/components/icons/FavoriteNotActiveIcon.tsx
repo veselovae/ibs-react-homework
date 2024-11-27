@@ -1,6 +1,4 @@
-import { FunctionComponent } from "react";
-
-export const FavoriteNotActiveIcon: FunctionComponent = () => {
+export const FavoriteNotActiveIcon = () => {
   return (
     <svg
       width="20"

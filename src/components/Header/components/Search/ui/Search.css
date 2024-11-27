@@ -1,0 +1,40 @@
+header > .search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 18.75rem;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 3px;
+}
+
+.search-icon path {
+    transition: fill 0.2s ease;
+}
+
+header > .search-box > input {
+    width: 100%;
+    padding: 0.75rem 2rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--primary-color);
+    border: 0;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s ease;
+}
+
+header > .search-box > input:focus {
+    border-bottom-color: var(--secondary-color);
+    outline: 0;
+}
+
+header > .search-box > input:focus + .search-icon {
+    fill: var(--secondary-color);
+}
+
+header > .search-box > input::placeholder {
+    font-size: 0.875rem;
+    color: var(--primary-color);
+}

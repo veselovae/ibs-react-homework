@@ -1,6 +1,4 @@
-import { FunctionComponent } from "react";
-
-export const MinusIcon: FunctionComponent = () => {
+export const MinusIcon = () => {
   return (
     <svg
       width="14"

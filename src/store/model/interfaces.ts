@@ -19,6 +19,5 @@ interface IProductPicture {
 }
 
 export interface IState {
-  searchParam: string;
   catalogItems: IProductItem[];
 }
