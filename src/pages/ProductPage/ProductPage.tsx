@@ -1,5 +1,5 @@
 import { Header } from "@src/components/Header";
-import { ProductCard } from "../components/ProductCard";
+import { ProductCard } from "./components/ProductCard";
 
 export const ProductPage = () => {
   return (

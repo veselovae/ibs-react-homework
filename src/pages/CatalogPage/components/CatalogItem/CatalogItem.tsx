@@ -1,5 +1,5 @@
-import { MouseEvent, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { MouseEvent, useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IProductItem } from "@src/store/model/interfaces";
 
@@ -11,22 +11,23 @@ import "./CatalogItem.css";
 export const CatalogItem = ({ item }: { item: IProductItem }) => {
   const [itemLike, setItemLike] = useState(item?.like);
 
-  const toggleItemLike = (e: MouseEvent) => {
-    e.stopPropagation();
-    setItemLike(!itemLike);
-  };
   const navigate = useNavigate();
-  const { pathname } = useLocation();
 
-  const handleClick = () => {
-    pathname.includes("catalog")
-      ? navigate(`${item.id}`)
-      : navigate(`catalog/${item.id}`);
-  };
+  const handleClick = useCallback(() => {
+    navigate(`../catalog/${item.id}`);
+  }, [navigate, item.id]);
+
+  const handleToggleItemLike = useCallback(
+    (e: MouseEvent) => {
+      e.stopPropagation();
+      setItemLike(!itemLike);
+    },
+    [itemLike],
+  );
 
   return (
     <div className="catalog-item" onClick={handleClick}>
-      <button className="favorite-btn" onClick={(e) => toggleItemLike(e)}>
+      <button className="favorite-btn" onClick={handleToggleItemLike}>
         {itemLike ? <FavoriteActiveIcon /> : <FavoriteNotActiveIcon />}
       </button>
 

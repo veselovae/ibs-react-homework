@@ -1,18 +1,17 @@
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { Search } from "../components/Search";
+import { Search } from "./components/Search";
 import { CartIcon } from "@icons/CartIcon";
 import { UserIcon } from "@icons/UserIcon";
 
 import "./Header.css";
 
 export const Header = () => {
-  const { pathname } = useLocation();
-  const isCatalogPage = pathname === "/" || pathname === "/catalog";
+  const { productId } = useParams();
 
   return (
     <header>
-      {isCatalogPage && <Search />}
+      {!productId && <Search />}
 
       <div className="header-features-box">
         <button className="header-feature-btn">

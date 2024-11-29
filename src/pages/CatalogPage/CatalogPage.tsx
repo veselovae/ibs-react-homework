@@ -1,5 +1,5 @@
 import { Header } from "@src/components/Header";
-import { Catalog } from "../components/Catalog";
+import { Catalog } from "./components/Catalog";
 
 export const CatalogPage = () => {
   return (

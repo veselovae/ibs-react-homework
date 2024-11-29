@@ -1,7 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { useFetchProduct } from "../hooks/useFetchProduct";
+import { useFetchProduct } from "./hooks/useFetchProduct";
 
 import { FavoriteActiveIcon } from "@icons/FavoriteActiveIcon";
 import { FavoriteNotActiveIcon } from "@icons/FavoriteNotActiveIcon";
@@ -12,33 +12,38 @@ import { Error } from "@src/components/Error";
 
 import "./ProductCard.css";
 
-const INITIAL_QUANTITY = 1;
+const INITIAL_QUANTITY = 0;
 
 export const ProductCard = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const [isFavorite, setIsFavorite] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [itemQuantity, setItemQuantity] = useState<number | "">(
     INITIAL_QUANTITY,
   );
 
   const { isError, isLoading, product } = useFetchProduct(productId as string);
 
-  const handleChangeIcon = () => setIsFavorite(!isFavorite);
+  const handleChangeIcon = useCallback(
+    () => setIsFavorite(!isFavorite),
+    [isFavorite],
+  );
 
-  const increaseProductQuantity = () =>
-    setItemQuantity(Number(itemQuantity) + 1);
+  const handleIncreaseProductQty = useCallback(
+    () => setItemQuantity(Number(itemQuantity) + 1),
+    [itemQuantity],
+  );
 
-  const decreaseProductQuantity = () => {
-    if (itemQuantity > 1) {
+  const handleDecreaseProductQty = useCallback(() => {
+    if (itemQuantity > 0) {
       setItemQuantity(Number(itemQuantity) - 1);
     }
-  };
+  }, [itemQuantity]);
 
-  const handleCloseProductCard = () => {
+  const handleCloseProductCard = useCallback(() => {
     navigate(-1);
-  };
+  }, [navigate]);
 
   const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {
@@ -48,11 +53,22 @@ export const ProductCard = () => {
     }
   };
 
-  const handleCheckInputValue = (e: ChangeEvent<HTMLInputElement>) => {
-    if (Number(e.target.value) < 1 || e.target.value === "") {
+  const handleCheckInputValue = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    if (value === "") {
       setItemQuantity(INITIAL_QUANTITY);
     }
   };
+
+  const handlePreventNegativeNumber = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === "-") {
+        e.preventDefault();
+      }
+    },
+    [],
+  );
 
   return (
     <div className="product-card-container">
@@ -60,7 +76,7 @@ export const ProductCard = () => {
       {isError && <Error />}
 
       {!isLoading && !isError && (
-        <div className="product-сard">
+        <div className="product-card">
           <button
             className="back-to-catalog-btn"
             onClick={handleCloseProductCard}
@@ -84,7 +100,7 @@ export const ProductCard = () => {
               <div className="product-quantity-box">
                 <button
                   className="quantity-btn reduce-btn"
-                  onClick={decreaseProductQuantity}
+                  onClick={handleDecreaseProductQty}
                 >
                   <MinusIcon />
                 </button>
@@ -92,17 +108,20 @@ export const ProductCard = () => {
                   type="number"
                   className="product-quantity"
                   value={itemQuantity}
+                  onKeyDown={handlePreventNegativeNumber}
                   onChange={handleChangeQuantity}
                   onBlur={handleCheckInputValue}
                 />
                 <button
                   className="quantity-btn increase-btn"
-                  onClick={increaseProductQuantity}
+                  onClick={handleIncreaseProductQty}
                 >
                   <PlusIcon />
                 </button>
               </div>
-              <button className="add-to-cart">Add to cart</button>
+              <button className="add-to-cart" disabled={!itemQuantity}>
+                Add to cart
+              </button>
               <button className="card-favorite-btn" onClick={handleChangeIcon}>
                 {isFavorite ? (
                   <FavoriteActiveIcon />

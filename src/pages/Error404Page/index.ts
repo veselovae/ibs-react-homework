@@ -1,1 +1,1 @@
-export { Error404Page } from "./ui/Error404Page";
+export { Error404Page } from "./Error404Page";

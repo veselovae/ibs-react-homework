@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { debounce } from "@src/utils/utils";
@@ -11,23 +11,17 @@ const DELAY_MS = 600;
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const updateSearchParam = (searchParam: string) => {
-    setSearchParams({ search: searchParam });
-  };
 
-  const initInpValue = searchParams.get("search") || "";
-  const [inpValue, setInpValue] = useState(initInpValue);
+  const inpValue = searchParams.get("search") ?? "";
 
   const debouncedChange = debounce((inputValue: string) => {
-    updateSearchParam(inputValue);
+    setSearchParams({ search: inputValue });
   }, DELAY_MS);
 
-  const updateCatalog = useCallback((val: string) => debouncedChange(val), []);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setInpValue(inputValue);
-    updateCatalog(inputValue);
+  const handleChange = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    debouncedChange(value);
   };
 
   return (
@@ -36,7 +30,7 @@ export const Search = () => {
         type="text"
         placeholder="Search products"
         className="search-input"
-        value={inpValue}
+        defaultValue={inpValue}
         onChange={handleChange}
       />
       <SearchIcon />
