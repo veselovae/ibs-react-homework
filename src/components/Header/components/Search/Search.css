@@ -1,0 +1,19 @@
+.search-icon {
+    fill: var(--primary-color);
+    transition: fill 0.2s ease;
+}
+
+.search-input > .MuiInputBase-root::before {
+    border: 0 !important;
+}
+
+
+.MuiInput-root.Mui-focused .search-icon {
+    fill: var(--secondary-color);
+}
+
+
+header > .search-box > input::placeholder {
+    font-size: 0.875rem;
+    color: var(--primary-color);
+}
