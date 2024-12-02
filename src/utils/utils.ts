@@ -1,4 +1,4 @@
-export const debounce = <T>(cb: Function, delay: number) => {
+export const debounce = <T>(callback: Function, delay: number) => {
   let timeoutId: ReturnType<typeof setTimeout>;
   return function (...args: T[]) {
     if (timeoutId) {
@@ -6,7 +6,7 @@ export const debounce = <T>(cb: Function, delay: number) => {
     }
 
     timeoutId = setTimeout(() => {
-      cb(...args);
+      callback(...args);
     }, delay);
   };
 };

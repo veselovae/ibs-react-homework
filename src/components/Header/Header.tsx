@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 
+import IconButton from "@mui/material/IconButton";
+
 import { Search } from "./components/Search";
 import { CartIcon } from "@icons/CartIcon";
 import { UserIcon } from "@icons/UserIcon";
@@ -14,12 +16,12 @@ export const Header = () => {
       {!productId && <Search />}
 
       <div className="header-features-box">
-        <button className="header-feature-btn">
+        <IconButton className="header-feature-btn">
           <CartIcon />
-        </button>
-        <button className="header-feature-btn">
+        </IconButton>
+        <IconButton className="header-feature-btn">
           <UserIcon />
-        </button>
+        </IconButton>
       </div>
     </header>
   );

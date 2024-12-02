@@ -1,6 +1,9 @@
 import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+
 import { debounce } from "@src/utils/utils";
 
 import { SearchIcon } from "@icons/SearchIcon";
@@ -25,15 +28,22 @@ export const Search = () => {
   };
 
   return (
-    <div className="search-box">
-      <input
-        type="text"
-        placeholder="Search products"
-        className="search-input"
-        defaultValue={inpValue}
-        onChange={handleChange}
-      />
-      <SearchIcon />
-    </div>
+    <TextField
+      sx={{ maxWidth: "18.75rem", width: "100%" }}
+      variant="standard"
+      placeholder="Search products"
+      className="search-input"
+      defaultValue={inpValue}
+      onChange={handleChange}
+      slotProps={{
+        input: {
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        },
+      }}
+    />
   );
 };

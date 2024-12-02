@@ -1,7 +1,7 @@
-import { IProductItem, IState } from "../model/interfaces";
+import { catalogType, IState } from "../model/interfaces";
 
 const defaultState: IState = {
-  catalogItems: [],
+  catalogItems: {},
 };
 
 export const reducer = (state = defaultState, action: any) => {
@@ -9,7 +9,7 @@ export const reducer = (state = defaultState, action: any) => {
     case "SET_CATALOG_ITEMS":
       return {
         ...state,
-        catalogItems: [...(action.payload as IProductItem[])],
+        catalogItems: { ...(action.payload as catalogType) },
       };
 
     default:

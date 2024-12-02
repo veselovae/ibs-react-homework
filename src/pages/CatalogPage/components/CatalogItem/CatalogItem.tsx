@@ -5,6 +5,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { IconButton } from "@mui/material";
 
 import { IProductItem } from "@src/store/model/interfaces";
 
@@ -12,10 +13,13 @@ import { FavoriteNotActiveIcon } from "@icons/FavoriteNotActiveIcon";
 import { FavoriteActiveIcon } from "@icons/FavoriteActiveIcon";
 
 import "./CatalogItem.css";
-import { IconButton } from "@mui/material";
 
-export const CatalogItem = ({ item }: { item: IProductItem }) => {
-  const [itemLike, setItemLike] = useState(item?.like);
+interface ICatalogItemProps {
+  item: IProductItem;
+}
+
+export const CatalogItem = ({ item }: ICatalogItemProps) => {
+  const [itemLike, setItemLike] = useState<boolean | undefined>(item?.like);
 
   const navigate = useNavigate();
 
@@ -50,11 +54,9 @@ export const CatalogItem = ({ item }: { item: IProductItem }) => {
         />
       </div>
       <CardContent className="item-content">
-        <div className="item-name-wrapper">
-          <Typography variant="h5" className="item-name" gutterBottom>
-            {item?.name}
-          </Typography>
-        </div>
+        <Typography variant="h5" className="item-name" gutterBottom>
+          {item?.name}
+        </Typography>
         <Typography variant="price" className="item-price">
           ${item.price?.value}
         </Typography>

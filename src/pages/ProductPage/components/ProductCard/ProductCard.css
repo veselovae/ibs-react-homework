@@ -11,15 +11,12 @@
 }
 
 .back-to-catalog-btn {
-    position: absolute;
+    position: absolute !important;
     right: 15px;
     top: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    border: 0;
-    background-color: transparent;
+    height: 2rem;
+    width: 2rem;
     transform: rotate(45deg);
-    cursor: pointer;
 }
 
 .back-to-catalog-btn > svg {
@@ -79,7 +76,7 @@
 }
 
 .product-quantity,
-.quantity-btn {
+.MuiIconButton-root.quantity-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,7 +85,8 @@
     background-color: transparent;
 }
 
-.quantity-btn {
+.MuiIconButton-root.quantity-btn {
+    border-radius: 0;
     width: 2.5rem;
     cursor: pointer;
 }
@@ -106,30 +104,18 @@
     appearance: none;
 }
 
-.add-to-cart {
+.MuiButton-root.add-to-cart {
     height: 2.5rem;
     min-width: 10rem;
     font-size: 1.5rem;
-    text-align: center;
     color: #fff;
-    background-color: var(--secondary-color);
-    border: 0;
-    border-radius: 0.625rem;
-    transition: background-color 0.2s ease;
-    cursor: pointer;
+    box-shadow: none;
+    text-transform: initial;
 }
 
-.add-to-cart:hover {
+.MuiButton-root.add-to-cart:hover {
     background-color: #e99330;
     box-shadow: 2px 2px 4px 0 #00000040;
-}
-
-.add-to-cart:disabled {
-    background-color: #a6a0a0;
-    cursor: not-allowed;
-}
-.add-to-cart:disabled:hover {
-    box-shadow: none
 }
 
 .card-favorite-btn {

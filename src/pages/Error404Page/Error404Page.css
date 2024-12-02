@@ -6,11 +6,9 @@
     padding-right: 1rem;
 }
 
-.page-404-image-wrapper {
+.page-404-image {
+    position: relative;
     max-width: 500px;
     width: 100%;
-}
 
-.page-404-image {
-    width: 100%;
 }

@@ -12,6 +12,8 @@ export interface IProductItem {
   };
 }
 
+export type catalogType = Record<IProductItem["id"], IProductItem>;
+
 interface IProductPicture {
   path: string;
   alt: string;
@@ -19,5 +21,5 @@ interface IProductPicture {
 }
 
 export interface IState {
-  catalogItems: IProductItem[];
+  catalogItems: catalogType;
 }

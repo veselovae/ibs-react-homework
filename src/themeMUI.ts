@@ -2,6 +2,11 @@ import { createTheme } from "@mui/material";
 import React from "react";
 
 export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#e97f03",
+    },
+  },
   typography: {
     h5: {
       fontSize: "1.125rem",

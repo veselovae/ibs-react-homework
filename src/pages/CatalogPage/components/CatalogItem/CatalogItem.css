@@ -43,13 +43,7 @@
 
 .item-content {
     text-align: center;
-}
-
-.item-name-wrapper {
-    display: flex;
-    align-items: center;
-    height: 2.5rem;
-    text-align: center;
+    padding-top: 0 !important;
 }
 
 .item-name {

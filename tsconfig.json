@@ -1,11 +1,7 @@
 {
+  "extends": "./tsconfig.path",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "@pages*": ["src/pages", "src/pages/*"],
-      "@icons*": ["src/components/icons", "src/components/icons/*"],
-      "@src*": ["src/*"]
-    },
     "target": "es5",
     "lib": [
       "dom",

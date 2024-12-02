@@ -1,6 +1,9 @@
 import { ChangeEvent, KeyboardEvent, useCallback, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+import IconButton from "@mui/material/IconButton";
+import Button from "@mui/material/Button";
+
 import { useFetchProduct } from "./hooks/useFetchProduct";
 
 import { FavoriteActiveIcon } from "@icons/FavoriteActiveIcon";
@@ -77,12 +80,12 @@ export const ProductCard = () => {
 
       {!isLoading && !isError && (
         <div className="product-card">
-          <button
+          <IconButton
             className="back-to-catalog-btn"
             onClick={handleCloseProductCard}
           >
             <PlusIcon />
-          </button>
+          </IconButton>
           <div className="product-img-wrapper">
             <img
               alt="product-photo"
@@ -91,19 +94,23 @@ export const ProductCard = () => {
             />
           </div>
           <div className="product-info">
-            <h4 className="product-name">{product?.name}</h4>
-            <p className="product-description">{product?.description}</p>
+            <h4 className="product-name">{product?.name || "Название"}</h4>
+            <p className="product-description">{product?.description || ""}</p>
             <h5 className="product-details-title">Details</h5>
-            <p className="product-details-description">{product?.details}</p>
+            <p className="product-details-description">
+              {product?.details || ""}
+            </p>
             <div className="product-feat-box">
-              <span className="product-price">${product?.price.value}</span>
+              <span className="product-price">
+                ${product?.price.value || ""}
+              </span>
               <div className="product-quantity-box">
-                <button
+                <IconButton
                   className="quantity-btn reduce-btn"
                   onClick={handleDecreaseProductQty}
                 >
                   <MinusIcon />
-                </button>
+                </IconButton>
                 <input
                   type="number"
                   className="product-quantity"
@@ -112,23 +119,30 @@ export const ProductCard = () => {
                   onChange={handleChangeQuantity}
                   onBlur={handleCheckInputValue}
                 />
-                <button
+                <IconButton
                   className="quantity-btn increase-btn"
                   onClick={handleIncreaseProductQty}
                 >
                   <PlusIcon />
-                </button>
+                </IconButton>
               </div>
-              <button className="add-to-cart" disabled={!itemQuantity}>
+              <Button
+                variant="contained"
+                className="add-to-cart"
+                disabled={!itemQuantity}
+              >
                 Add to cart
-              </button>
-              <button className="card-favorite-btn" onClick={handleChangeIcon}>
+              </Button>
+              <IconButton
+                className="card-favorite-btn"
+                onClick={handleChangeIcon}
+              >
                 {isFavorite ? (
                   <FavoriteActiveIcon />
                 ) : (
                   <FavoriteNotActiveIcon />
                 )}
-              </button>
+              </IconButton>
             </div>
           </div>
         </div>

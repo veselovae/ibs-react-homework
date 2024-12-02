@@ -13,7 +13,6 @@ header > .header-features-box {
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 1rem;
 }
 
 .header-feature-btn {
