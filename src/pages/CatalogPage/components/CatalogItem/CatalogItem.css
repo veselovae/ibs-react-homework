@@ -16,6 +16,7 @@
 }
 
 .favorite-btn {
+    position: absolute;
     height: min-content;
     align-self: flex-end;
     border: 0;
@@ -36,6 +37,14 @@
     margin-bottom: 0.313rem;
 }
 
+.photo-wrapper > .item-photo {
+    width: fit-content;
+}
+
+.item-content {
+    text-align: center;
+}
+
 .item-name-wrapper {
     display: flex;
     align-items: center;
@@ -45,7 +54,6 @@
 
 .item-name {
     display: -webkit-box;
-    font-size: 1.125rem;
     font-weight: 400;
     color: var(--primary-color);
     overflow: hidden;
@@ -57,8 +65,6 @@
 
 .item-price {
     margin-top: 0.313rem;
-    font-size: 0.875rem;
-    color: #545454;
 }
 
 @media (max-width: 515px) {

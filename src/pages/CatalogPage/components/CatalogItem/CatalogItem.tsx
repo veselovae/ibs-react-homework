@@ -1,12 +1,18 @@
 import { MouseEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+
 import { IProductItem } from "@src/store/model/interfaces";
 
 import { FavoriteNotActiveIcon } from "@icons/FavoriteNotActiveIcon";
 import { FavoriteActiveIcon } from "@icons/FavoriteActiveIcon";
 
 import "./CatalogItem.css";
+import { IconButton } from "@mui/material";
 
 export const CatalogItem = ({ item }: { item: IProductItem }) => {
   const [itemLike, setItemLike] = useState(item?.like);
@@ -26,18 +32,33 @@ export const CatalogItem = ({ item }: { item: IProductItem }) => {
   );
 
   return (
-    <div className="catalog-item" onClick={handleClick}>
-      <button className="favorite-btn" onClick={handleToggleItemLike}>
+    <Card className="catalog-item" onClick={handleClick}>
+      <IconButton
+        aria-label="add to favorites"
+        className="favorite-btn"
+        onClick={handleToggleItemLike}
+      >
         {itemLike ? <FavoriteActiveIcon /> : <FavoriteNotActiveIcon />}
-      </button>
+      </IconButton>
 
       <div className="photo-wrapper">
-        <img src={item?.picture?.img} className="item-photo" alt={item?.name} />
+        <CardMedia
+          component="img"
+          image={item?.picture?.img}
+          className="item-photo"
+          alt={item?.name}
+        />
       </div>
-      <div className="item-name-wrapper">
-        <h5 className="item-name">{item?.name}</h5>
-      </div>
-      <span className="item-price">${item.price?.value}</span>
-    </div>
+      <CardContent className="item-content">
+        <div className="item-name-wrapper">
+          <Typography variant="h5" className="item-name" gutterBottom>
+            {item?.name}
+          </Typography>
+        </div>
+        <Typography variant="price" className="item-price">
+          ${item.price?.value}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };

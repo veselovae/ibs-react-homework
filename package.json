@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@craco/types": "^7.1.0",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/material": "^6.1.9",
     "@redux-devtools/extension": "^3.3.0",
     "@types/node": "^16.18.119",
     "@types/react": "^18.3.12",
