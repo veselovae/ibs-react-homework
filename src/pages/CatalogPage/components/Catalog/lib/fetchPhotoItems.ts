@@ -1,7 +1,9 @@
 import { IProductItem } from "@src/store/model/interfaces";
 import { getItemPhoto } from "@src/utils/api";
 
-export const fetchPhotoItems = async (data: IProductItem[]) => {
+export const fetchPhotoItems = async (
+  data: IProductItem[],
+): Promise<IProductItem[]> => {
   const images = await Promise.all(
     data.map((item) => getItemPhoto(item.picture.path)),
   );
