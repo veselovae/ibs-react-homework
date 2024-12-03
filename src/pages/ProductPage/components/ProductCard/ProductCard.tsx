@@ -94,16 +94,12 @@ export const ProductCard = () => {
             />
           </div>
           <div className="product-info">
-            <h4 className="product-name">{product?.name ?? "Название"}</h4>
-            <p className="product-description">{product?.description ?? ""}</p>
+            <h4 className="product-name">{product?.name}</h4>
+            <p className="product-description">{product?.description}</p>
             <h5 className="product-details-title">Details</h5>
-            <p className="product-details-description">
-              {product?.details ?? ""}
-            </p>
+            <p className="product-details-description">{product?.details}</p>
             <div className="product-feat-box">
-              <span className="product-price">
-                ${product?.price.value ?? ""}
-              </span>
+              <span className="product-price">${product?.price.value}</span>
               <div className="product-quantity-box">
                 <IconButton
                   className="quantity-btn reduce-btn"

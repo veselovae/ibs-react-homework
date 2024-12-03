@@ -5,7 +5,8 @@ import { setCatalogItemsAction } from "@src/store/actions/actionCreators";
 
 import { getCatalogItems } from "@src/utils/api";
 import { fetchPhotoItems } from "../lib/fetchPhotoItems";
-import { catalogType, IState } from "@src/store/model/interfaces";
+import { catalogType, IProductItem, IState } from "@src/store/model/interfaces";
+import { processResponse } from "@src/utils/utils";
 
 export const useFetchCatalogItems = () => {
   const catalogItems = useSelector((state: IState) => state.catalogItems);
@@ -23,14 +24,23 @@ export const useFetchCatalogItems = () => {
     } else {
       setIsLoading(true);
       getCatalogItems()
-        .then((res) => fetchPhotoItems(res))
-        .then((res) => {
-          const obj = res.reduce((acc, el) => {
-            return {
-              ...acc,
-              [el.id]: el,
-            };
-          }, {});
+        .then(
+          (res: IProductItem[]): Promise<IProductItem[]> =>
+            fetchPhotoItems(res),
+        )
+        .then((res: IProductItem[]): IProductItem[] =>
+          res.map((item: IProductItem): IProductItem => processResponse(item)),
+        )
+        .then((res: IProductItem[]): void => {
+          const obj: catalogType = res.reduce(
+            (acc, el: IProductItem): catalogType => {
+              return {
+                ...acc,
+                [el.id]: el,
+              };
+            },
+            {},
+          );
           setData(obj);
           setIsError(false);
           dispatch(setCatalogItemsAction(obj));
