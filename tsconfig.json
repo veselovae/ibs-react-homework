@@ -1,5 +1,7 @@
 {
+  "extends": "./tsconfig.path",
   "compilerOptions": {
+    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -22,5 +24,5 @@
   },
   "include": [
     "src"
-  ]
+  ],
 }
